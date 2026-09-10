@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            height: 528px;
+            width: 528px;
+            border-style: solid;
+            border-color: black;
+            border-width: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <script>
+        //ilk olarak div den değer alırız yani ölçüleri alırız..
+        //inputtab değeri alırız ilk aşamada bu alert olabilir.
+        //Sonra ben bu bölümlemeden bir ölçü çıkarırım.
+        //Buna göre div ölçülerini belirlerim.
+        //buna göre dikey ve yatay sıralama yaparım
+        //Mouse üste geldiği zamanda bu divler renklenir ya da başka bir şey olur.
+
+        const cont = document.querySelector(".container");
+
+        const style = cont.getBoundingClientRect();
+
+        containerWidth = style.width;
+
+        containerheight = style.height;
+
+    </script>
+    
+</body>
+</html>
