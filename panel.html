@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
         .container{
             display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            flex-wrap:wrap-reverse;
             height: 528px;
             width: 528px;
             border-style: solid;
-            border-color: black;
-            border-width: 10px;
+            border-color: rgb(194, 186, 186);
+            min-width: 0px;
+            border-width: 1px;
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -20,11 +31,11 @@
 
     </div>
 
+    <input type="number" id="numberValue" min="2" max="100">
+    <button id="sendValue">Reset</button>
+
     <script>
-        //ilk olarak div den değer alırız yani ölçüleri alırız..
-        //inputtab değeri alırız ilk aşamada bu alert olabilir.
-        //Sonra ben bu bölümlemeden bir ölçü çıkarırım.
-        //Buna göre div ölçülerini belirlerim.
+        
         //buna göre dikey ve yatay sıralama yaparım
         //Mouse üste geldiği zamanda bu divler renklenir ya da başka bir şey olur.
 
@@ -32,9 +43,48 @@
 
         const style = cont.getBoundingClientRect();
 
-        containerWidth = style.width;
+        const containerWidth = cont.clientWidth;
+        const containerHeight = cont.clientHeight;
 
-        containerheight = style.height;
+
+        const nvalue = document.getElementById("sendValue");
+
+        
+
+        nvalue.addEventListener("click",()=>{
+            cont.innerHTML = "";
+            const input = document.getElementById("numberValue").value;
+            console.log(input);
+            gridX= containerWidth / input;
+            gridY=containerHeight / input;
+            input2 = Math.pow(input,2);
+            console.log(gridX);
+            console.log(gridY);
+            for(let i =0; i< input2;i++){
+                const divs = document.createElement("div");
+                divs.style.width = gridX + "px";
+                divs.style.height = gridY + "px";
+                divs.style.minWidth = gridX + "px";
+                divs.style.minHeight = gridY + "px"; 
+                divs.style.boxSizing = "border-box";  // Beni asıl kurtaran kısım bu oldu.
+                divs.style.background = "white";
+                divs.style.border = "1px solid #999";
+                cont.appendChild(divs);
+            
+            };
+            cont.addEventListener("mouseover",(e)=>{
+                if(e != cont){
+                    e.target.style.background = "black";
+                }
+            })
+                
+
+            
+            
+        })
+        
+
+
 
     </script>
     
